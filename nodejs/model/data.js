@@ -1,5 +1,5 @@
 class Modeldata{
-    static counter=1;
+    static counter=0;
     static list=[];
 }
 

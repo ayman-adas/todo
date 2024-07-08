@@ -2,7 +2,7 @@ const Modeldata = require("../model/data");
 
 selectFun=(req,res)=>{
     if(res){
-         tasksObject = {};
+         tasksObject = [];
 
         Modeldata.list.forEach((task, index) => {
             tasksObject[index] = {

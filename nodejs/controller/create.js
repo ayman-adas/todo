@@ -6,10 +6,10 @@ const createFun = (req,res)=>{
         const {task,complete}=req.query
         console.log(complete)
     Modeldata.list.push({
-        "id":Modeldata.counter,
-        "task":task,
-        "complete":complete,
-        "date":Date.now()
+        id:Modeldata.counter,
+        task:task,
+        complete:complete,
+        date:Date.now()
      }
     ) ;
    Modeldata.counter++
