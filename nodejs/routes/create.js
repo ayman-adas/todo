@@ -1,4 +1,6 @@
 const express= require("express")
+const bodyParser = require('body-parser');
+
 const { createFun } = require("../controller/create")
 
 const craeteRouter = express.Router()

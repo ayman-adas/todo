@@ -1,9 +1,11 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'dart:developer' as developer;
 import 'package:provider/provider.dart';
 
-import '../controller/http.dart';
+import '../../controller/http.dart';
 
 class WidgetTodoList extends StatelessWidget {
   WidgetTodoList(
@@ -18,30 +20,23 @@ class WidgetTodoList extends StatelessWidget {
   final String id;
   bool isUpadte = false;
 
-  
   @override
   Widget build(BuildContext context) {
-     HttpController https =
-          Provider.of<HttpController>(context, listen: true);
+    HttpController https = Provider.of<HttpController>(context, listen: true);
     IconButton iconButton() {
-     
-
       try {
-        bool isComplete =
-            iscomplete == 'true'; // Default to false if complete is null
-
-        if (isComplete) {
+        if (iscomplete == 'true') {
           return IconButton(
             icon: const Icon(Icons.check),
             onPressed: () async {
-              https.updateTodo(id, task, 'false');
+              await https.updateTodo(id, task, 'false');
             },
           );
         } else {
           return IconButton(
             icon: const Icon(Icons.question_mark),
             onPressed: () async {
-              https.updateTodo(id, task, 'true');
+              await https.updateTodo(id, task, 'true');
             },
           );
         }
@@ -52,17 +47,19 @@ class WidgetTodoList extends StatelessWidget {
     }
 
     Widget field() {
-if(isUpadte){      return SizedBox(
-        height: 10,
-        width: 10,
-        child: TextFormField(
-          onSaved: (newValue) async {
-            https.updateTodo(id, newValue ?? '', iscomplete);
-          },
-        
-        ),
-      );}
-      else{return Text(task);}
+      if (isUpadte) {
+        return SizedBox(
+          height: 10,
+          width: 10,
+          child: TextFormField(
+            onSaved: (newValue) async {
+              https.updateTodo(id, newValue ?? '', iscomplete);
+            },
+          ),
+        );
+      } else {
+        return Text(task);
+      }
     }
 
     var dt = DateTime.fromMillisecondsSinceEpoch((int.parse(date)));
@@ -88,8 +85,7 @@ if(isUpadte){      return SizedBox(
               },
               child: const Text("Update",
                   style: TextStyle(
-                      fontSize: 16,
-                      color: Color.fromARGB(255, 14, 10, 214)))),
+                      fontSize: 16, color: Color.fromARGB(255, 14, 10, 214)))),
           const SizedBox(
             width: 10,
           ),

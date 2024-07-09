@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutterp/widget/todo_list.dart';
+import 'package:flutterp/utiils/widget/todo_list.dart';
 import 'package:provider/provider.dart';
 import '../controller/http.dart';
-import '../widget/text_field.dart';
+import '../utiils/widget/text_field.dart';
 import 'dart:developer' as developer;
 
 class TodoView extends StatefulWidget {

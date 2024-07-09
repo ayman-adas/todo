@@ -1,6 +1,6 @@
-class Modeldata{
-    static counter=0;
-    static list=[];
+class Modeldata {
+    static counter = 0;
+    static list = [];
 }
 
-module.exports= Modeldata;
+module.exports = Modeldata;

@@ -2,7 +2,7 @@ class Modeltodo{
   String? task;
   String ?complete;
   String? date;
-  String ?index;
+    String? index;
   get getTask => task;
 
  void setTask(String task) => this.task = task;
