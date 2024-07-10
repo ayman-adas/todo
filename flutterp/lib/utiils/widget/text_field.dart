@@ -15,7 +15,7 @@ class WidgetTextField extends StatelessWidget {
           controller: controller,
           showCursor: true,
           onSaved: (newValue) async {
-            await https.createTodo(newValue ?? '', 'false');
+            await https.createTodo(newValue ?? '', 'false',DateTime.now().millisecondsSinceEpoch);
           },
           decoration: const InputDecoration(
             hintText: "What would you like to do",
@@ -32,7 +32,7 @@ class WidgetTextField extends StatelessWidget {
       ),
       InkWell(
         onTap: () async {
-          await https.createTodo(controller.value.text, 'false');
+          await https.createTodo(controller.value.text, 'false',DateTime.now().microsecondsSinceEpoch);
         },
         child: const Text(
           'Add New Text',

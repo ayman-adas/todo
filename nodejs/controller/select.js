@@ -1,26 +1,27 @@
-const Modeldata = require("../model/data");
+const {con} = require("../model/database");
 
-selectFun=(req,res)=>{
-    if(res){
-         tasksObject = [];
+selectFun = (req, res) => {
+    if (res) {
 
-        Modeldata.list.forEach((task, index) => {
-            tasksObject[index] = {
-                id:task.id,
-                task: task.task,
-                complete: task.complete,
-                date:task.date // Assuming you want the current timestamp for each task
-            };
-        });
-    
-res.send(tasksObject)
- }
- else{
-    res.send('error 404')
+        (con.query(`select * from task`, function (error, results, fields) {
+            if(results){
+            console.log(results)
+            res.send(results)
+            }else{
+                console.log('error');
+            }
+            
+
+        }
+
+        ))
+    }
+    else {
+        res.send('error 404')
+    }
+
 }
 
-    }
-    
 module.exports = {
     selectFun
 }

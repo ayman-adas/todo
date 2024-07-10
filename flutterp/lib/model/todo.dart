@@ -20,10 +20,10 @@ class Modeltodo{
  void setindex( String index) => this.index = index;
 Modeltodo();
 Modeltodo.fromMap(Map <String,dynamic> map) {
-  task=map['task'].toString();
-  complete=map['complete'].toString();
-  index=map['id'].toString();
-  date=map['date'].toString();
+  task=map['taskname'].toString();
+  complete=map['isComplete'].toString();
+  index=map['taskid'].toString();
+  date=map['taskdate'].toString();
 
 }
 @override

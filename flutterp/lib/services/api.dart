@@ -62,13 +62,15 @@ class ServicesApi {
       String domainName, String path, Map<String, dynamic> body) async {
     try {
       Uri url = Uri.parse('$domainName$path');
-      await https.delete(
+   var response =   await https.delete(
         url,
         body: jsonEncode(body),
         headers: {
           'Content-Type': 'application/json', // Specify content-type
         },
       );
+            checkStatus(response.statusCode);
+
     } catch (error) {
       developer.log(error.toString());
     }

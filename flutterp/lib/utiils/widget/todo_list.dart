@@ -49,8 +49,8 @@ class WidgetTodoList extends StatelessWidget {
     Widget field() {
       if (isUpadte) {
         return SizedBox(
-          height: 10,
-          width: 10,
+          height: 20,
+          width: 20,
           child: TextFormField(
             onSaved: (newValue) async {
               https.updateTodo(id, newValue ?? '', iscomplete);

@@ -1,11 +1,14 @@
-const Modeldata = require("../model/data")
+const {con} = require("../model/database");
 
 deleteFun=(req,res)=>{
     if(res){
          if (res.statusCode === 200) {
-        const {index}=req.body
-    Modeldata.list.splice(index,1)
-    res.send("sucsess")
+        const {taskid}=req.body
+        const query = 'DELETE FROM task WHERE taskid = ?';
+        con.query(query, taskid, (err, result) => {     
+                   if (err) throw err;
+            console.log('Table created successfully');
+        });    res.send("sucsess")
     } else{
         res.send('error 404')
     }
